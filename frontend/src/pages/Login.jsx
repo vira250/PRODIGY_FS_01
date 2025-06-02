@@ -49,7 +49,7 @@ const Login =() =>{
                     <span>Don't have Account?</span>
                     <Link to='/register' className="text-blue-500">Sign Up</Link>
                 </div>
-                <button onClick={() => navigate('/home')}>Manual Navigate</button>
+                
             </div>
         </div>
     )
