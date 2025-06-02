@@ -1,6 +1,7 @@
 import express from 'express';
 import {connectToDatabase} from '../lib/db.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 const router =express.Router()
 
 router.post('/register', async (req, res) =>{
@@ -27,5 +28,35 @@ router.post('/register', async (req, res) =>{
         res.status(500).json(err)
     }
 })
+
+
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  console.log('Login attempt for email:', email);
+
+  try {
+    const db = await connectToDatabase();
+    console.log('DB connected');
+
+    const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+    console.log('Email check rows:', rows);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ message: 'User does not exist' });
+    }
+
+    const isMatch = await bcrypt.compare(password, rows[0].password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid password' });
+    }
+
+    const token = jwt.sign({ id: rows[0].id }, process.env.JWT_KEY, { expiresIn: '3h' });
+
+    return res.status(200).json({ token: token });
+  } catch (err) {
+    console.error('Internal error', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 export default router;  
