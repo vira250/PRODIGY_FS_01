@@ -1,6 +1,6 @@
 # 🔐 Secure User Authentication System
 
-This is Task-01 of the **Prodigy Infotech Web Development Internship**, where we built a **Secure User Authentication System** using HTML, CSS, JavaScript, Node.js, Express.js, and MySQL (no MongoDB).
+This is Task-01 of the **Prodigy Infotech Web Development Internship**, where we built a **Secure User Authentication System** using React, Tailwind CSS, JavaScript, Node.js, Express.js, and MySQL (no MongoDB).
 
 ## 📌 Project Features
 
