@@ -17,8 +17,8 @@ This is Task-01 of the **Prodigy Infotech Web Development Internship**, where we
 
 | Frontend | Backend | Database | Others         |
 |----------|---------|----------|----------------|
-| HTML     | Node.js | MySQL    | Express.js     |
-| CSS      | Express |          | bcryptjs       |
+| REACT    | Node.js | MySQL    | Express.js     |
+| Tailwind CSS      | Express |          | bcryptjs       |
 | JavaScript |       |          | express-session|
 
 ---
